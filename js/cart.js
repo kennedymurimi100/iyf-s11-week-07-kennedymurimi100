@@ -51,12 +51,9 @@ export function clearCart() {
 }
 
 export function getCartTotal() {
-    return cart.reduce((total, item) => {
-        const product = products.find(p => p.id === item.productId);
-        return total + (product.price * item.quantity);
-    }, 0);
+    return calculateCartTotal(cart, products);
 }
 
 export function getCartCount() {
-    return cart.reduce((count, item) => count + item.quantity, 0);
+    return calculateCartCount(cart);
 }
