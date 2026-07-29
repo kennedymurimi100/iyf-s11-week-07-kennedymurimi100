@@ -62,7 +62,6 @@ node js/practise.js
 - Forgot to route `getCartTotal`/`getCartCount` through the newly extracted pure functions in `utils.js` when setting up Task 14.5, which ESLint's `no-unused-vars` warning caught immediately — a good example of linting catching an incomplete refactor.
 
 ## Screenshots (optional)
-_Not included._
 
 ## Live Demo (if deployed)
-_Not deployed — run locally by opening `index.html` in your browser._
+
