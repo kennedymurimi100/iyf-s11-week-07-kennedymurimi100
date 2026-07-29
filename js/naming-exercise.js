@@ -8,7 +8,7 @@ const users = [
 
 
 const d = new Date();
-const x = users.filter(u => u.a > 18);
+const x = users.filter(u => u.age > 18);
 
 function calc(a, b) {
     return a * b * 0.1;
