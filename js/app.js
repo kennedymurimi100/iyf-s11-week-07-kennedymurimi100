@@ -1,6 +1,6 @@
 import {
     products, cart, addToCart, updateQuantity,
-    removeFromCart, clearCart, getCartTotal, getCartCount
+    removeFromCart, clearCart, getCartTotal, getCartCount, loadProducts
 } from "./cart.js";
 import { renderProducts, renderCart, renderCartSummary } from "./ui.js";
 
@@ -38,4 +38,9 @@ clearBtn.addEventListener("click", () => {
     render();
 });
 
-render();
+async function init() {
+    await loadProducts();
+    render();
+}
+
+init();

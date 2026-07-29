@@ -1,12 +1,12 @@
 import { save, load } from "./storage.js";
+import { fetchProducts } from "./api.js";
 
-export const products = [
-    { id: 1, name: "Laptop", price: 999, image: "laptop.png" },
-    { id: 2, name: "Phone", price: 699, image: "phone.png" },
-    { id: 3, name: "Headphones", price: 199, image: "headphones.png" }
-];
-
+export let products = [];
 export let cart = load("cart", []); // [{ productId, quantity }]
+
+export async function loadProducts() {
+    products = await fetchProducts();
+}
 
 function saveCart() {
     save("cart", cart);
