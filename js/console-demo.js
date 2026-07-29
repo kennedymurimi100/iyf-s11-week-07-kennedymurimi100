@@ -17,7 +17,9 @@ console.log("Step 2");
 console.groupEnd();
 
 console.time("loopTest");
-for (let i = 0; i < 1000000; i++) {} // dummy work
+for (let i = 0; i < 1000000; i++) {
+    void i;
+}
 console.timeEnd("loopTest");
 
 console.assert(users.length > 0, "users array should not be empty");

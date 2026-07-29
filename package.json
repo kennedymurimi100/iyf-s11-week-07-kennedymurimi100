@@ -1,0 +1,31 @@
+{
+  "name": "iyf-s11-week-07-kennedymurimi100",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint js/",
+    "lint:fix": "eslint js/ --fix",
+    "format": "prettier --write js/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kennedymurimi100/iyf-s11-week-07-kennedymurimi100.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kennedymurimi100/iyf-s11-week-07-kennedymurimi100/issues"
+  },
+  "homepage": "https://github.com/kennedymurimi100/iyf-s11-week-07-kennedymurimi100#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "prettier": "^3.9.6"
+  }
+}

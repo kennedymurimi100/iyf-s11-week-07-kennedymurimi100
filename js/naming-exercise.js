@@ -14,6 +14,9 @@ function calc(a, b) {
     return a * b * 0.1;
 }
 
+console.log("Date:", d.toLocaleDateString());
+console.log("Filtered adults:", x.map(u => u.name));
+console.log("Calc example:", calc(5, 10));
 
 const currentDate = new Date();
 const adultUsers = users.filter(user => user.age > 18);
