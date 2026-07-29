@@ -1,5 +1,6 @@
 import { save, load } from "./storage.js";
 import { fetchProducts } from "./api.js";
+import { calculateCartTotal, calculateCartCount } from "./utils.js";
 
 export let products = [];
 export const cart = load("cart", []); // [{ productId, quantity }]
