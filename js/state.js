@@ -1,26 +1,49 @@
 
+import { save, load } from "./storage.js";
+
 export const state = {
     todos: [],
     filter: "all",
     theme: "light"
-};
-
-export function setFilter(filter) {
-    state.filter = filter;
 }
 
-export function addTodo(todo) {
-    state.todos.push(todo);
+
+export function setState(updates) {
+    Object.assign(state, updates);
+    saveState();
+}
+
+export function setFilter(filter) {
+    setState({ filter });
+}
+
+export function addTodo(text) {
+    setState({
+        todos: [...state.todos, { id: Date.now(), text, completed: false }]
+    });
 }
 
 export function removeTodo(id) {
-    state.todos = state.todos.filter(todo => todo.id !== id);
+    setState({
+        todos: state.todos.filter(todo => todo.id !== id)
+    });
 }
 
 export function toggleTodo(id) {
-    const todo = state.todos.find(todo => todo.id === id);
+    setState({
+        todos: state.todos.map(todo =>
+            todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        )
+    });
+}
 
-    if (todo) {
-        todo.completed = !todo.completed;
+export function saveState() {
+    save("appState", state);
+}
+
+export function loadState() {
+    const saved = load("appState");
+    if (saved) {
+        Object.assign(state, saved);
     }
 }

@@ -1,23 +1,41 @@
-import { createUser } from "./user.js";
-import { showSuccess, showError } from "./ui.js";
+import {
+    products, cart, addToCart, updateQuantity,
+    removeFromCart, clearCart, getCartTotal, getCartCount
+} from "./cart.js";
+import { renderProducts, renderCart, renderCartSummary } from "./ui.js";
 
-const user = {
-    name: " Kennedymurimi100 ",
-    email: "kennedymurimi100@email.com",
-    age: 26
-};
+const productList = document.getElementById("product-list");
+const cartList = document.getElementById("cart-list");
+const cartSummary = document.getElementById("cart-summary");
+const clearBtn = document.getElementById("clear-cart");
 
-async function handleCreateUser() {
-    try {
-        const createdUser = await createUser(user);
-
-        console.log(createdUser);
-
-        showSuccess("User created!");
-
-    } catch (error) {
-        showError(error.message);
-    }
+function render() {
+    renderProducts(productList, products, handleAddToCart);
+    renderCart(cartList, cart, products, {
+        onUpdateQuantity: handleUpdateQuantity,
+        onRemove: handleRemove
+    });
+    renderCartSummary(cartSummary, getCartTotal(), getCartCount());
 }
 
-handleCreateUser();
+function handleAddToCart(productId) {
+    addToCart(productId);
+    render();
+}
+
+function handleUpdateQuantity(productId, quantity) {
+    updateQuantity(productId, quantity);
+    render();
+}
+
+function handleRemove(productId) {
+    removeFromCart(productId);
+    render();
+}
+
+clearBtn.addEventListener("click", () => {
+    clearCart();
+    render();
+});
+
+render();
